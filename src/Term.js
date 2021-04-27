@@ -60,7 +60,7 @@ export class Term extends Component{
                                 <ButtonToolbar>
     <Button className="mr-2" variant="info"
     onClick={()=>this.setState({editModalShow:true,
-        termid:term.TERMID,word:term.WORD,def:term.DEF})}>
+        TERMID:term.TERMID,WORD:term.WORD,DEF:term.DEF})}>
                                     
                                     Edit 
                                     </Button> 
@@ -68,9 +68,9 @@ export class Term extends Component{
     onClick={()=>this.deleteTerm(term.TERMID)}> Delete </Button>
     <EditTermModal show={this.state.editModalShow}
         onHide={editModalClose}
-        termid={termid}
-        word={word}
-        def={def}/>
+        TERMID={termid}
+        WORD={word}
+        DEF={def}/>
 </ButtonToolbar></td>
                             </tr>
                             )}

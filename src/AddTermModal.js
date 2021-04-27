@@ -9,6 +9,15 @@ export class AddTermModal extends Component{
         this.handleSubmit=this.handleSubmit.bind(this);
      //   this.handleFileSelected=this.handleFileSelected.bind(this);
     }
+
+    componentDidMount(){
+        fetch('http://localhost:5000/api/term')
+        .then(response=>response.json())
+        .then(data=>{
+            this.setState({terms:data});
+        });
+    }
+
     handleSubmit(event){
         event.preventDefault();
         fetch('http://localhost:5000/api/term',{
@@ -19,12 +28,13 @@ export class AddTermModal extends Component{
             },
             body:JSON.stringify({
                 TERMID:null,
-                WORD:event.target.value,
-                DEF:event.target.value
+                WORD:event.target.WORD.value,
+                DEF:event.target.DEF.value
             })
         })
         .then(res=>res.json())
         .then((result)=>{
+            console.log('result' + result.WORD);
             alert(result);
         },
         (error)=>{
